@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelly Paulina Ortiz – Ingeniera Química</title>
+  <style>
+    /* ── Reset & Base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d2b45;
+      --teal:   #1a6b72;
+      --teal-light: #2a9d8f;
+      --sand:   #f4f1ea;
+      --white:  #ffffff;
+      --gray:   #6b7280;
+      --text:   #1f2937;
+      --border: #d1d5db;
+      --shadow: 0 4px 24px rgba(13,43,69,.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Navigation ─────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+
+    nav .brand {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    nav ul a {
+      color: rgba(255,255,255,.80);
+      text-decoration: none;
+      font-size: .875rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    nav ul a:hover { color: var(--teal-light); }
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    header.hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      color: var(--white);
+      padding: 80px 2rem 70px;
+      text-align: center;
+    }
+
+    .hero-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 4px solid rgba(255,255,255,.50);
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    header.hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: .02em;
+      line-height: 1.2;
+    }
+
+    header.hero .subtitle {
+      margin-top: .5rem;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero-chips {
+      display: flex;
+      gap: .75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .chip {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.30);
+      border-radius: 999px;
+      padding: .3rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Layout Wrapper ─────────────────────────────────────── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* ── Section Cards ──────────────────────────────────────── */
+    section {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem 2.5rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-title .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .section-title h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: .02em;
+    }
+
+    /* ── Personal Info Grid ─────────────────────────────────── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .info-item {
+      background: var(--sand);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+    }
+
+    .info-item .label {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+
+    .info-item .value {
+      font-size: .95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Profile text ───────────────────────────────────────── */
+    .profile-text {
+      color: var(--gray);
+      font-size: .97rem;
+      line-height: 1.8;
+    }
+
+    /* ── Skills ─────────────────────────────────────────────── */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .skill-tag {
+      background: var(--sand);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: .35rem .9rem;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    /* ── Lab Cards ──────────────────────────────────────────── */
+    .lab-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .lab-card {
+      border-left: 4px solid var(--teal-light);
+      border-radius: 0 12px 12px 0;
+      background: var(--sand);
+      padding: 1.4rem 1.5rem;
+    }
+
+    .lab-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .lab-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .lab-card .institution {
+      font-size: .88rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-top: .2rem;
+    }
+
+    .lab-badge {
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 999px;
+      padding: .25rem .85rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .lab-period {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .8rem;
+      color: var(--gray);
+      font-weight: 600;
+      margin-top: .6rem;
+    }
+
+    .lab-period::before {
+      content: '📅';
+      font-size: .85rem;
+    }
+
+    .lab-card p {
+      margin-top: .65rem;
+      font-size: .9rem;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .lab-tasks {
+      margin-top: .75rem;
+      padding-left: 1.1rem;
+    }
+
+    .lab-tasks li {
+      font-size: .88rem;
+      color: #4b5563;
+      margin-bottom: .3rem;
+    }
+
+    /* ── Contact ─────────────────────────────────────────────── */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--sand);
+      border-radius: 10px;
+      padding: .8rem 1.2rem;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      transition: box-shadow .2s, transform .15s;
+    }
+
+    .contact-item:hover {
+      box-shadow: 0 4px 14px rgba(13,43,69,.15);
+      transform: translateY(-2px);
+    }
+
+    .contact-item .ci { font-size: 1.2rem; }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.55);
+      text-align: center;
+      padding: 1.8rem 1rem;
+      font-size: .8rem;
+      letter-spacing: .04em;
+    }
+
+    footer span { color: rgba(255,255,255,.80); font-weight: 600; }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav ul { gap: 1rem; }
+      section { padding: 1.8rem 1.2rem; }
+      header.hero { padding: 60px 1.2rem 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav>
+    <a class="brand" href="#">K. P. Ortiz</a>
+    <ul>
+      <li><a href="#perfil">Perfil</a></li>
+      <li><a href="#laboratorios">Laboratorios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="hero-avatar" aria-hidden="true">👩‍🔬</div>
+    <h1>Kelly Paulina Ortiz</h1>
+    <p class="subtitle">Ingeniera Química</p>
+    <div class="hero-chips">
+      <span class="chip">Procesos Industriales</span>
+      <span class="chip">Control de Calidad</span>
+      <span class="chip">Seguridad Química</span>
+      <span class="chip">Investigación &amp; Desarrollo</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Información Personal ────────────────────────────── -->
+    <section id="perfil">
+      <div class="section-title">
+        <div class="icon" aria-hidden="true">👤</div>
+        <h2>Información Personal</h2>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">Nombre completo</div>
+          <div class="value">Kelly Paulina Ortiz</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Profesión</div>
+          <div class="value">Ingeniera Química</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Especialización</div>
+          <div class="value">Procesos y Materiales</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Idiomas</div>
+          <div class="value">Español · Inglés (B2)</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Disponibilidad</div>
+          <div class="value">Tiempo completo</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Ubicación</div>
+          <div class="value">México</div>
+        </div>
+      </div>
+
+      <!-- Perfil profesional -->
+      <div class="section-title" style="margin-top:2rem;">
+        <div class="icon" aria-hidden="true">📋</div>
+        <h2>Perfil Profesional</h2>
+      </div>
+      <p class="profile-text">
+        Ingeniera Química egresada con sólida formación en el diseño, operación y optimización de
+        procesos industriales. A lo largo de su trayectoria académica ha desarrollado competencias
+        en análisis fisicoquímico, control de calidad y manejo seguro de sustancias químicas.
+        Comprometida con la mejora continua, la innovación tecnológica y el cumplimiento estricto
+        de normas de seguridad e higiene industrial. Capaz de trabajar en entornos multidisciplinares,
+        aportar soluciones técnicas fundamentadas y adaptarse rápidamente a nuevos desafíos.
+      </p>
+
+      <!-- Habilidades -->
+      <div class="section-title" style="margin-top:2rem;">
+        <div class="icon" aria-hidden="true">⚗️</div>
+        <h2>Habilidades Técnicas</h2>
+      </div>
+      <div class="skills-list">
+        <span class="skill-tag">Balances de Materia y Energía</span>
+        <span class="skill-tag">Química Analítica</span>
+        <span class="skill-tag">Termodinámica Aplicada</span>
+        <span class="skill-tag">Operaciones Unitarias</span>
+        <span class="skill-tag">Control de Procesos</span>
+        <span class="skill-tag">BPL / BPM</span>
+        <span class="skill-tag">AutoCAD P&amp;ID</span>
+        <span class="skill-tag">Microsoft Excel Avanzado</span>
+        <span class="skill-tag">Cromatografía (HPLC / GC)</span>
+        <span class="skill-tag">Espectroscopía UV-Vis</span>
+        <span class="skill-tag">Normas ISO 9001</span>
+        <span class="skill-tag">HAZOP / FMEA</span>
+      </div>
+    </section>
+
+    <!-- ── Laboratorios ─────────────────────────────────────── -->
+    <section id="laboratorios">
+      <div class="section-title">
+        <div class="icon" aria-hidden="true">🔬</div>
+        <h2>Prácticas en Laboratorio</h2>
+      </div>
+
+      <div class="lab-list">
+
+        <!-- Lab 1 -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <div>
+              <h3>Laboratorio de Análisis Fisicoquímico</h3>
+              <p class="institution">Universidad Nacional Autónoma de México (UNAM) – Facultad de Química</p>
+            </div>
+            <span class="lab-badge">Académico</span>
+          </div>
+          <span class="lab-period">Agosto 2021 – Diciembre 2021</span>
+          <p>
+            Desarrollo de técnicas analíticas para la caracterización de muestras líquidas y sólidas
+            mediante métodos volumétricos, gravimétricos y espectrométricos. Aplicación de buenas
+            prácticas de laboratorio (BPL) y gestión de residuos peligrosos.
+          </p>
+          <ul class="lab-tasks">
+            <li>Determinación de DQO, DBO₅ y sólidos totales en muestras de agua residual.</li>
+            <li>Calibración y operación de espectrofotómetro UV-Vis y pH-metro.</li>
+            <li>Elaboración de reportes técnicos con análisis estadístico de resultados.</li>
+          </ul>
+        </div>
+
+        <!-- Lab 2 -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <div>
+              <h3>Laboratorio de Operaciones Unitarias</h3>
+              <p class="institution">Universidad Nacional Autónoma de México (UNAM) – Facultad de Química</p>
+            </div>
+            <span class="lab-badge">Académico</span>
+          </div>
+          <span class="lab-period">Enero 2022 – Mayo 2022</span>
+          <p>
+            Experimentación y análisis de procesos de transferencia de calor y masa en equipos
+            a escala piloto: columnas de destilación, intercambiadores de calor, absorbedores y
+            secadores de bandeja.
+          </p>
+          <ul class="lab-tasks">
+            <li>Diseño y operación de columna de destilación batch de mezcla etanol-agua.</li>
+            <li>Determinación de coeficientes globales de transferencia de calor.</li>
+            <li>Modelado de curvas de operación en hoja de cálculo (Excel / Python).</li>
+          </ul>
+        </div>
+
+        <!-- Lab 3 -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <div>
+              <h3>Laboratorio de Control de Calidad</h3>
+              <p class="institution">Industrias Químicas del Pacífico S.A. de C.V. – Guadalajara, Jalisco</p>
+            </div>
+            <span class="lab-badge">Prácticas Profesionales</span>
+          </div>
+          <span class="lab-period">Junio 2022 – Noviembre 2022</span>
+          <p>
+            Prácticas profesionales en el área de control de calidad de materias primas y producto
+            terminado dentro de una empresa fabricante de insumos para la industria farmacéutica y
+            cosmética.
+          </p>
+          <ul class="lab-tasks">
+            <li>Ejecución de ensayos fisicoquímicos y microbiológicos según especificaciones de
+                cliente y normativa NOM/NMX.</li>
+            <li>Elaboración y actualización de procedimientos normalizados de operación (POE/SOP).</li>
+            <li>Participación en auditorías internas de calidad bajo norma ISO 9001:2015.</li>
+            <li>Manejo de cromatógrafo de gases (GC) para análisis de pureza de solventes.</li>
+          </ul>
+        </div>
+
+        <!-- Lab 4 -->
+        <div class="lab-card">
+          <div class="lab-card-header">
+            <div>
+              <h3>Laboratorio de Investigación en Polímeros</h3>
+              <p class="institution">Centro de Investigación en Química Aplicada (CIQA) – Saltillo, Coahuila</p>
+            </div>
+            <span class="lab-badge">Estancia de Investigación</span>
+          </div>
+          <span class="lab-period">Febrero 2023 – Julio 2023</span>
+          <p>
+            Estancia de investigación orientada al desarrollo y caracterización de materiales
+            poliméricos biodegradables con potencial aplicación en empaques sustentables.
+          </p>
+          <ul class="lab-tasks">
+            <li>Síntesis y caracterización de biopolímeros mediante técnicas de DSC, TGA y FTIR.</li>
+            <li>Evaluación de propiedades mecánicas (tensión, elongación) de películas poliméricas.</li>
+            <li>Contribución a publicación de artículo científico en revista indexada (en proceso).</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Contacto ─────────────────────────────────────────── -->
+    <section id="contacto">
+      <div class="section-title">
+        <div class="icon" aria-hidden="true">✉️</div>
+        <h2>Contacto</h2>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-item" href="mailto:k.paulina.ortiz@email.com">
+          <span class="ci">📧</span>
+          k.paulina.ortiz@email.com
+        </a>
+        <a class="contact-item" href="tel:+52-55-0000-0000">
+          <span class="ci">📞</span>
+          +52 55 0000 0000
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/kellypauortiz" target="_blank" rel="noopener">
+          <span class="ci">🔗</span>
+          LinkedIn / kellypauortiz
+        </a>
+        <a class="contact-item" href="#">
+          <span class="ci">📍</span>
+          Ciudad de México, México
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer>
+    <p>&copy; 2024 <span>Kelly Paulina Ortiz</span> · Ingeniera Química · Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
